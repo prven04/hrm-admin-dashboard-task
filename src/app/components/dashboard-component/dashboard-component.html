@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+  <div
+    class="dashboard-header d-flex align-items-center justify-content-between mb-4 p-3 bg-light rounded shadow-sm"
+  >
+    <div>
+      <h2 class="mb-0">
+        Welcome, <span class="text-primary">Praveen Kumar</span>
+      </h2>
+      <small class="text-muted">Admin</small>
+    </div>
+    <img
+      src="/my_pic_2.jpg"
+      alt="Admin Avatar"
+      class="rounded-circle"
+      width="48"
+      height="48"
+    />
+  </div>
+  <div class="row mt-4">
+    <div class="col-12 col-lg-6">
+      <app-employee-performance
+        [view]="view"
+        [colorScheme]="colorScheme"
+        [performanceData]="performanceData"
+      ></app-employee-performance>
+    </div>
+    <div class="col-12 col-lg-6">
+      <app-employee-summary
+        [view]="view"
+        [colorScheme]="colorScheme"
+        [data]="data"
+      ></app-employee-summary>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12 col-lg-6">
+      <app-total-employees></app-total-employees>
+    </div>
+    <div class="col-12 col-lg-6">
+      <app-recent-activity></app-recent-activity>
+    </div>
+  </div>
+</div>

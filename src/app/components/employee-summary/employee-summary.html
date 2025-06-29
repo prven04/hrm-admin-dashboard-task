@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">
+    <h5>Summary Statistics</h5>
+  </div>
+  <div class="card-body text-center">
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="data"
+      [gradient]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="'Department'"
+      [yAxisLabel]="'Employees'"
+      [animations]="true"
+    >
+    </ngx-charts-bar-vertical>
+  </div>
+</div>

@@ -1,0 +1,188 @@
+<div>
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary px-3 w-100">
+    <!-- Left Menu Button -->
+    <button
+      class="btn btn-outline-light btn-sm me-3"
+      type="button"
+      (click)="sideNavToggle()"
+    >
+      <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Brand / Title (optional) -->
+    <span class="navbar-brand mb-0 h6 ms-2">Praveen Tech Solutions</span>
+
+    <!-- Spacer to push right section -->
+    <div class="flex-grow-1"></div>
+
+    <!-- Right Section -->
+    <div class="d-flex align-items-center">
+      <!-- Search Input -->
+      <form class="form-inline me-3">
+        <input
+          class="form-control form-control-sm me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+      </form>
+
+      <!-- Notification Icon -->
+      <!-- <button
+        mat-icon-button
+        class="btn btn-outline-light btn-sm me-3"
+        type="button"
+      >
+        <mat-icon>notifications</mat-icon>
+      </button> -->
+
+      <div class="position-relative">
+        <button
+          mat-icon-button
+          class="btn btn-outline-light btn-sm me-3"
+          type="button"
+          (click)="dropDownToggle('notification')"
+        >
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <ul
+          *ngIf="showNotificationDropDown"
+          class="dropdown-menu dropdown-menu-end show p-0"
+          style="position: absolute; top: 100%; right: 0; min-width: 320px"
+        >
+          <li class="dropdown-header px-3 py-2 fw-bold">Notifications</li>
+          <li>
+            <a
+              class="dropdown-item d-flex align-items-center gap-2 px-3 py-2"
+              href="#"
+            >
+              <mat-icon class="text-primary">mail</mat-icon>
+              <span class="flex-grow-1">New message received</span>
+              <span class="badge bg-info ms-auto">2m ago</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item d-flex align-items-center gap-2 px-3 py-2"
+              href="#"
+            >
+              <mat-icon class="text-success">check_circle</mat-icon>
+              <span class="flex-grow-1">Task completed</span>
+              <span class="badge bg-success ms-auto">10m ago</span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item d-flex align-items-center gap-2 px-3 py-2"
+              href="#"
+            >
+              <mat-icon class="text-warning">warning</mat-icon>
+              <span class="flex-grow-1">Password expires soon</span>
+              <span class="badge bg-warning text-dark ms-auto">1h ago</span>
+            </a>
+          </li>
+          <li><hr class="dropdown-divider m-0" /></li>
+          <li>
+            <a class="dropdown-item text-center py-2" href="#">
+              View all notifications
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <button
+        mat-icon-button
+        class="btn btn-outline-light btn-sm me-3"
+        type="button"
+      >
+        <mat-icon>person</mat-icon>
+      </button>
+
+      <div class="position-relative">
+        <button
+          mat-icon-button
+          class="btn btn-outline-light btn-sm"
+          type="button"
+          (click)="dropDownToggle('settings')"
+        >
+          <mat-icon>settings</mat-icon>
+        </button>
+        <ul
+          *ngIf="showSettingsDropDown"
+          class="dropdown-menu dropdown-menu-end show"
+          style="position: absolute; top: 100%; right: 0"
+        >
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li><a class="dropdown-item" href="#">Account Settings</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Area -->
+  <div class="row">
+    <!-- Side Navigation -->
+    <div
+      class="transition-all duration-100 ease-in-out overflow-hidden"
+      [ngClass]="{ 'col-lg-2': shoHideSideNav, 'w-0 p-0': !shoHideSideNav }"
+    >
+      <nav *ngIf="shoHideSideNav" class="h-full flex flex-col p-2 bg-white">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <button
+              mat-button
+              class="nav-link"
+              [routerLink]="['/dashboard']"
+              (click)="closeSideNavOnMobile()"
+            >
+              <mat-icon>dashboard</mat-icon>
+              <span>Dashboard</span>
+            </button>
+          </li>
+
+          <li class="nav-item">
+            <button
+              mat-button
+              class="nav-link"
+              [routerLink]="['/employees']"
+              (click)="closeSideNavOnMobile()"
+            >
+              <mat-icon>group</mat-icon>
+              <span>Employees</span>
+            </button>
+          </li>
+
+          <li class="nav-item">
+            <button
+              mat-button
+              class="nav-link"
+              [routerLink]="['/settings']"
+              (click)="closeSideNavOnMobile()"
+            >
+              <mat-icon>settings</mat-icon>
+              <span>Settings</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Content Area with dynamic width -->
+    <div
+      class="transition-all duration-300 ease-in-out"
+      [ngClass]="{ 'col-lg-10': shoHideSideNav, 'col-lg-12': !shoHideSideNav }"
+    >
+      <div class="bg-secondary p-3 min-h-[calc(100vh-64px)]">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center p-3 mt-4">
+    <p class="mb-0">©2025 Praveen Tech Solution. All rights reserved.</p>
+  </footer>
+</div>
